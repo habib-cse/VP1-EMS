@@ -1,0 +1,8 @@
+habib   developer  1250   habib@gmail.com   01724948025 
+juwel   student  25852   juwel@gmail.com   017249+48 
+sagor   actor  45025   sagor@gmail.com   017249 
+juwel   teacher  125852   juwel@gmail.com   0172494 
+shahin   designer  12300   habib@gmail.com   01724 
+delu   boday  125   dilu@gmail.com   01752 
+Tushar   developer  12500   habib@gmail.com   017548 
+masud   master  123654   em@gmail.com   01457 

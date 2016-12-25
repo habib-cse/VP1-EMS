@@ -24,8 +24,80 @@ void section(){
       printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
 
 }
-void development(){
-    FILE *fd;
+
+void home(){
+    int ch;
+        do{
+            printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 MAIN MENU \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 \n");
+              menu();
+              scanf("%d",&ch);
+              switch(ch){
+                case 1:{
+                     printf("@@@@@@@@ YOU ARE GOING TO ADD EMPLOYEE @@@@@@@@@\n \n");
+                    caseone();
+                }
+                case 0:exit(0);
+              }
+          }
+          while(ch != 0);
+}
+
+
+
+void caseone(){
+    int sec;
+    do{
+        section();
+          scanf("%d",&sec);
+          switch(sec){
+            case 1:{
+                printf(">>>>>>> YOU HAVE SELECTED DEVELOPMENT SECTION <<<<<<<<\n");
+                development();
+                break;
+            }
+            case 2:{
+                printf(">>>>>>> YOU HAVE SELECTED ACCOUNTING SECTION <<<<<<<<\n");
+                accounting();
+                break;
+            }
+            case 3:{
+                printf("you select case 3 \n");
+                break;
+            }
+            case 4:{
+                printf("you select case 3 \n");
+                break;
+            }
+            case 5:{
+                break;
+            }
+          }
+        }
+
+        while(sec != 0);
+}
+
+
+
+int sucess(){
+    char y[5]= "y";
+    char yes[5];
+    int cmp;
+    printf("********** DATA INSERTED SUCESSFULLY ********* \n");
+    printf("********** DO YOU WANT TO ADD MORE DATA ? ********* \n");
+    printf("PRESS y IF YES -- PRESS n IF NOT \n");
+    scanf("%s",&yes);
+    cmp = strcmp(y,yes);
+    if(cmp == 0){
+       return 0;
+    }
+    else{
+        return 1;
+    }
+
+}
+
+void add(FILE *fd){
     char name[25];
     char title[25];
     int sal;
@@ -41,64 +113,64 @@ void development(){
     scanf("%s",&phon);
     printf("*** EMPLOYEE EMAIL *** \n");
     scanf("%s",&email);
-    fd = fopen("dev.txt","a");
     fprintf(fd,"%s   %s  %d   %s   %s \n",name,title,sal,email,phon);
     fclose(fd);
-    printf("********** DATA INSERTED SUCESSFULLY ********* \n");
+}
+
+void development(){
+    int res,data;
+    FILE *fd;
+    fd = fopen("Development.txt","a");
+    add(fd);
+    res = sucess();
+    if(res == 0){
+       printf("PRESS 1 FOR ADDING THIS SELECTED SECTION \n");
+       printf("PRESS 0 FOR GO BACK TO OTHER SECTION \n");
+       scanf("%d",&data);
+       if(data == 1){
+          development();
+       }
+       else{
+            caseone();
+       }
+    }
+    else{
+        home();
+    }
+}
+void accounting(){
+    int res,data;
+    FILE *fd;
+    fd = fopen("Accounting.txt","a");
+    add(fd);
+    res = sucess();
+    if(res == 0){
+       printf("PRESS 1 FOR ADDING THIS SELECTED SECTION \n");
+       printf("PRESS 0 FOR GO BACK TO OTHER SECTION \n");
+       scanf("%d",&data);
+       if(data == 1){
+          accounting();
+       }
+       else{
+            caseone();
+       }
+    }
+    else{
+        home();
+    }
 }
 
 
-int main(){
 
+int main(){
     int s = 0;
     system("COLOR 57");
-    int pass,ch,sec;
+    int pass;
     printf("********* WELCOME TO HI-TECH SOFTWORE SOLUTION ************ \n");
     printf("~~~~~~~~ PLEASE ENTER YOUR PASSWORD ~~~~~~~~~\n");
     scanf("%d",&pass);
     if(pass == 12){
-        system("COLOR 71");
-
-        do{
-        printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 MAIN MENU \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 \n");
-          menu();
-          scanf("%d",&ch);
-          switch(ch){
-            case 1:{do{
-                section();
-                  scanf("%d",&sec);
-                  switch(sec){
-                    case 1:{
-                        development();
-                        break;
-                    }
-                    case 2:{
-                        printf("you select case 2 \n");
-                        break;
-                    }
-                    case 3:{
-                        printf("you select case 3 \n");
-                        break;
-                    }
-                    case 4:{
-                        printf("you select case 3 \n");
-                        break;
-                    }
-                    case 5:{
-                        break;
-                    }
-                  }
-                  }
-
-                while(ch != 0);
-            }
-          }
-          }
-
-
-          while(ch != 0);
-
-
+        home();
     }
     else{
         printf("Password isn't correct ");
