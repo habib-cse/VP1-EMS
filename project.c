@@ -3,6 +3,15 @@
 #include<conio.h>
 #include<string.h>
 
+char dnames[25];
+char dids[25];
+char dtitle[25];
+int dsal;
+char demail[35];
+long int dphon;
+int n,i;
+
+
 void menu(){
           printf("\xB2\xB2\xB2 1 FOR ADD NEW EMPLOYEE     \xB2\xB2\xB2 \n");
           printf("\xB2\xB2\xB2 2 FOR SEARCHING EMPLOYEE   \xB2\xB2\xB2 \n");
@@ -35,6 +44,13 @@ void home(){
                 case 1:{
                      printf("@@@@@@@@ YOU ARE GOING TO ADD EMPLOYEE @@@@@@@@@\n \n");
                     caseone();
+                    break;
+                }
+                case 2:{
+                     printf("@@@@@@@@ YOU ARE GOING TO DISPLAY EMPLOYEE @@@@@@@@@\n \n");
+                     casetwo();
+                     break;
+
                 }
                 case 0:exit(0);
               }
@@ -42,6 +58,96 @@ void home(){
           while(ch != 0);
 }
 
+void display(){
+    int i;
+    char sline[350];
+    FILE *ft;
+    ft = fopen("Development.txt","r");
+    if(ft == NULL){
+        printf("No Employee found \n");
+    }
+    else{
+        while(!feof(ft)){
+            fgets(sline,350,ft);
+            puts(sline);
+        }
+    }
+
+    fclose(ft);
+}
+void simpleSelect(){
+    printf("-- WRITE  -> all <- FOR DISPLAY ALL DATA \n");
+    printf("-- WRITE -> name <- FOR SEARCH BY NAME \n");
+    printf("-- WRITE -> id <- FOR SEARCH BY ID \n");
+    printf("-- WRITE -> back <- FOR BACK TO SEARCH MENU \n");
+}
+void display_name(char dname[]){
+    FILE *dtf;
+    int dres;
+    dtf = fopen("Development.txt","r");
+    while(fscanf(dtf,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+       dres = strcmp(dnames,dname);
+       if(dres == 0){
+            printf("Name: %s \n",dnames);
+            printf("EID : %s \n",dids);
+            printf("DESIGNATION : %s \n",dtitle);
+            printf("SALARY : %d \n",dsal);
+            printf("EMAIL : %s \n",demail);
+            printf("PHON : %ld \n\n",dphon);
+       }
+    }
+    fclose(dtf);
+
+}
+void casetwo(){
+    int sec2,id;
+    char cmp[25],dname[25];
+    do{
+        section();
+          scanf("%d",&sec2);
+          switch(sec2){
+            case 1:{
+                FILE *fd;
+                printf(">>>>>>> YOU HAVE SELECTED DEVELOPMENT SECTION <<<<<<<<\n");
+                do{
+                simpleSelect();
+                scanf("%s",&cmp);
+                if(strcmp(cmp,"all") == 0){
+                    system("cls");
+                    display();
+                }
+                if(strcmp(cmp,"name") == 0){
+                    printf("------> WRITE THE NAME <------- \n");
+                    scanf("%s",&dname);
+                    system("cls");
+                    display_name(dname);
+                }
+                if(strcmp(cmp,"id") == 0){
+                }
+                if(strcmp(cmp,"back") == 0){
+                    casetwo();
+                }
+                }
+                while(cmp!="back");
+                break;
+            }
+            case 2:{
+                printf(">>>>>>> YOU HAVE SELECTED ACCOUNTING SECTION <<<<<<<<\n");
+                break;
+            }
+            case 3:{
+                printf(">>>>>>> YOU HAVE SELECTED MARKETING SECTION <<<<<<<<\n");
+                break;
+            }
+            case 4:{
+                printf(">>>>>>> YOU HAVE SELECTED HUMANRESOURCE SECTION <<<<<<<<\n");
+                break;
+            }
+            case 0:home();
+          }
+        }
+        while(sec2 != 0);
+}
 
 
 void caseone(){
@@ -49,23 +155,29 @@ void caseone(){
     do{
         section();
           scanf("%d",&sec);
+        system("cls");
           switch(sec){
             case 1:{
+                system("cls");
                 printf(">>>>>>> YOU HAVE SELECTED DEVELOPMENT SECTION <<<<<<<<\n");
                 development();
                 break;
+
             }
             case 2:{
+                system("cls");
                 printf(">>>>>>> YOU HAVE SELECTED ACCOUNTING SECTION <<<<<<<<\n");
                 accounting();
                 break;
             }
             case 3:{
+                system("cls");
                 printf(">>>>>>> YOU HAVE SELECTED MARKETING SECTION <<<<<<<<\n");
                 marketing();
                 break;
             }
             case 4:{
+                system("cls");
                 printf(">>>>>>> YOU HAVE SELECTED HUMANRESOURCE SECTION <<<<<<<<\n");
                 human();
                 break;
@@ -73,7 +185,6 @@ void caseone(){
             case 0:home();
           }
         }
-
         while(sec != 0);
 }
 
@@ -97,10 +208,11 @@ int sucess(){
 void add(FILE *fd){
     int back;
     char name[25];
+    char eid[10];
     char title[25];
     int sal;
     char email[35];
-    char phon[15];
+    long int phon;
     printf("*** WRITE 'back' TO GO SELECTION MENU *** \n");
     printf("*** EMPLOYEE NAME *** \n");
     scanf("%s",&name);
@@ -108,7 +220,13 @@ void add(FILE *fd){
     if(back == 0){
       caseone();
     }
-    printf("*** EMPLOYEE TITLE *** \n");
+    printf("*** EMPLOYEE ID *** \n");
+    scanf("%s",&eid);
+    back = strcmp(eid,"back");
+    if(back == 0){
+      caseone();
+    }
+    printf("*** EMPLOYEE DESIGNATION *** \n");
     scanf("%s",&title);
     back = strcmp(title,"back");
     if(back == 0){
@@ -120,21 +238,15 @@ void add(FILE *fd){
     if(back == 0){
       caseone();
     }
-
-    printf("*** WRITE 'back' TO GO SELECTION MENU *** \n");
-    printf("*** EMPLOYEE PHONE *** \n");
-    scanf("%s",&phon);
-    back = strcmp(phon,"back");
-    if(back == 0){
-      caseone();
-    }
     printf("*** EMPLOYEE EMAIL *** \n");
     scanf("%s",&email);
     back = strcmp(email,"back");
     if(back == 0){
       caseone();
     }
-    fprintf(fd,"%s   %s  %d   %s   %s \n",name,title,sal,email,phon);
+    printf("*** EMPLOYEE PHONE *** \n");
+    scanf("%ld",&phon);
+    fprintf(fd,"%s %s %s %d %s %ld\n",name,eid,title,sal,email,phon);
     fclose(fd);
 
 }
@@ -160,6 +272,7 @@ void development(){
         home();
     }
 }
+
 void accounting(){
     int ares,data;
     FILE *fd;
@@ -181,6 +294,7 @@ void accounting(){
         home();
     }
 }
+
 void marketing(){
     int mres,data;
     FILE *fm;
@@ -202,6 +316,7 @@ void marketing(){
         home();
     }
 }
+
 void human(){
     int fres,data;
     FILE *fh;
@@ -224,20 +339,25 @@ void human(){
     }
 }
 
-
-
 int main(){
     int s = 0;
+    int i;
     system("COLOR 57");
-    int pass;
+    char pass[5];
     printf("********* WELCOME TO HI-TECH SOFTWORE SOLUTION ************ \n");
-    printf("~~~~~~~~ PLEASE ENTER YOUR PASSWORD ~~~~~~~~~\n");
-    scanf("%d",&pass);
-    if(pass == 12){
-        home();
-    }
-    else{
-        printf("Password isn't correct ");
+    for(i=0;i<5;i++){
+
+        printf("~~~~~~~~ PLEASE ENTER YOUR PASSWORD ~~~~~~~~~\n");
+        scanf("%s",&pass);
+        s = strcmp(pass,"habib");
+        if(s == 0){
+            system("cls");
+            printf("********* PLEASE SELECT YOUR CHOICE ************ \n");
+            home();
+        }
+        else{
+            printf("Password isn't correct \n");
+        }
     }
 
 }

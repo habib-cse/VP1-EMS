@@ -1,2 +1,0 @@
-mark   dancer  5000   mark@gmail.com   0172494852 
-juwel   worker  15220   juwel@gmail.com   01724945 
