@@ -72,6 +72,7 @@ void dis(){
         printf("***->> EMAIL : %s \n",demail);
         printf("***->> PHON : %ld \n\n",dphon);
 }
+// Didplay all data ****
 void display(){
     FILE *ft;
     ft = fopen("Development.txt","r");
@@ -88,6 +89,25 @@ void display_a(){
     }
     fclose(ft);
 }
+void display_m(){
+    FILE *ft;
+    ft = fopen("Marketing.txt","r");
+    while(fscanf(ft,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+    dis();
+    }
+    fclose(ft);
+}
+void display_h(){
+    FILE *ft;
+    ft = fopen("Human.txt","r");
+    while(fscanf(ft,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+    dis();
+    }
+    fclose(ft);
+}
+
+//Display by Name ****
+
 
 void display_name(char dname[]){
     FILE *dtf;
@@ -97,6 +117,16 @@ void display_name(char dname[]){
 void display_aname(char dname[]){
     FILE *dtf;
     dtf = fopen("Accounting.txt","r");
+    data(dtf,dname);
+}
+void display_mname(char dname[]){
+    FILE *dtf;
+    dtf = fopen("Marketing.txt","r");
+    data(dtf,dname);
+}
+void display_hname(char dname[]){
+    FILE *dtf;
+    dtf = fopen("Human.txt","r");
     data(dtf,dname);
 }
 
@@ -111,8 +141,18 @@ void display_aid(char did[]){
     dtf = fopen("Accounting.txt","r");
     data_id(dtf,did);
 }
+void display_mid(char did[]){
+    FILE *dtf;
+    dtf = fopen("Marketing.txt","r");
+    data_id(dtf,did);
+}
+void display_hid(char did[]){
+    FILE *dtf;
+    dtf = fopen("Human.txt","r");
+    data_id(dtf,did);
+}
 
-
+//Search by Id
 void data_id(FILE *dtf,char aid[]){
     int dres,i;
         while(fscanf(dtf,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
@@ -127,7 +167,7 @@ void data_id(FILE *dtf,char aid[]){
     }
     fclose(dtf);
 }
-
+// search by name
 void data(FILE *dtf,char dname[]){
     int dres,i = 0;
 
@@ -210,10 +250,58 @@ void casetwo(){
             }
             case 3:{
                 printf(">>>>>>> YOU HAVE SELECTED MARKETING SECTION <<<<<<<<\n");
+                do{
+                simpleSelect();
+                scanf("%s",&cmp);
+                if(strcmp(cmp,"all") == 0){
+                    system("cls");
+                    display_m();
+                }
+                if(strcmp(cmp,"name") == 0){
+                    printf("------> EMPLOYEE'S NAME <------- \n");
+                    scanf("%s",&dname);
+                    system("cls");
+                    display_mname(dname);
+                }
+                if(strcmp(cmp,"id") == 0){
+                    printf("------> EMPLOYEE'S ID <------- \n");
+                    scanf("%s",&did);
+                    system("cls");
+                    display_mid(did);
+                }
+                if(strcmp(cmp,"back") == 0){
+                    casetwo();
+                }
+                }
+                while(cmp!="back");
                 break;
             }
             case 4:{
                 printf(">>>>>>> YOU HAVE SELECTED HUMANRESOURCE SECTION <<<<<<<<\n");
+                do{
+                simpleSelect();
+                scanf("%s",&cmp);
+                if(strcmp(cmp,"all") == 0){
+                    system("cls");
+                    display_h();
+                }
+                if(strcmp(cmp,"name") == 0){
+                    printf("------> EMPLOYEE'S NAME <------- \n");
+                    scanf("%s",&dname);
+                    system("cls");
+                    display_hname(dname);
+                }
+                if(strcmp(cmp,"id") == 0){
+                    printf("------> EMPLOYEE'S ID <------- \n");
+                    scanf("%s",&did);
+                    system("cls");
+                    display_hid(did);
+                }
+                if(strcmp(cmp,"back") == 0){
+                    casetwo();
+                }
+                }
+                while(cmp!="back");
                 break;
             }
             case 0:home();
