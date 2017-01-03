@@ -59,11 +59,276 @@ void home(){
                      break;
 
                 }
+                case 3:{
+                     printf("@@@@@@@@ YOU ARE GOING TO DELETE EMPLOYEE @@@@@@@@@\n \n");
+                     casethree();
+                     break;
+
+                }
+                case 4:{
+                     printf("@@@@@@@@ YOU ARE GOING TO DELETE EMPLOYEE @@@@@@@@@\n \n");
+                     casefour();
+                     break;
+
+                }
                 case 0:exit(0);
+                break;
+                default:printf("PLEASE SELECT FROM 0 TO 4 \n");
+                break;
               }
           }
           while(ch != 0);
 }
+//Edit function
+void casethree(){
+    int sec3;
+    section();
+    scanf("%d",&sec3);
+    if(sec3 == 1){
+       divedit();
+    }
+    else if(sec3 == 2){
+       accedit();
+    }
+    else if(sec3 == 3){
+       markedit();
+    }
+    else if(sec3 == 4){
+       humanedit();
+    }
+    else{
+        printf("PLEASE SELECT FROM 1 TO 4 \n");
+    }
+
+
+}
+// Human Section Edit
+void humanedit(){
+    int ress;
+    char dname[25];
+    printf("please insert the name \n");
+    scanf("%s",&dname);
+    FILE *fd1,*fd2;
+    fd1 = fopen("Human.txt","r");
+    fd2 = fopen("Humantemp.txt","w");
+    while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+       ress = strcmp(dname,dnames);
+       if(ress == 0){
+           add(fd2);
+       }
+       else{
+        fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
+       }
+    }
+    fclose(fd1);
+    fclose(fd2);
+    remove("Human.txt");
+    rename("Humantemp.txt","Human.txt");
+}
+// Marketing Section Edit
+void markedit(){
+    int ress;
+    char dname[25];
+    printf("please insert the name \n");
+    scanf("%s",&dname);
+    FILE *fd1,*fd2;
+    fd1 = fopen("Marketing.txt","r");
+    fd2 = fopen("Marketingtemp.txt","w");
+    while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+       ress = strcmp(dname,dnames);
+       if(ress == 0){
+           add(fd2);
+       }
+       else{
+        fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
+       }
+    }
+    fclose(fd1);
+    fclose(fd2);
+    remove("Marketing.txt");
+    rename("Marketingtemp.txt","Marketing.txt");
+}
+// ACCunting Section Edit
+void accedit(){
+    int ress;
+    char dname[25];
+    printf("please insert the name \n");
+    scanf("%s",&dname);
+    FILE *fd1,*fd2;
+    fd1 = fopen("Accounting.txt","r");
+    fd2 = fopen("Accountingtemp.txt","w");
+    while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+       ress = strcmp(dname,dnames);
+       if(ress == 0){
+           add(fd2);
+       }
+       else{
+        fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
+       }
+    }
+    fclose(fd1);
+    fclose(fd2);
+    remove("Accounting.txt");
+    rename("Accountingtemp.txt","Accounting.txt");
+}
+// Development Section Edit
+void divedit(){
+    int ress;
+    char dname[25];
+    printf("please insert the name \n");
+    scanf("%s",&dname);
+    FILE *fd1,*fd2;
+    fd1 = fopen("Development.txt","r");
+    fd2 = fopen("Developmenttemp.txt","w");
+    while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+       ress = strcmp(dname,dnames);
+       if(ress == 0){
+           add(fd2);
+       }
+       else{
+        fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
+       }
+    }
+    fclose(fd1);
+    fclose(fd2);
+    remove("Development.txt");
+    rename("Developmenttemp.txt","Development.txt");
+}
+
+
+
+
+
+//Deleting employee
+void casefour(){
+    int sec4;
+    section();
+    scanf("%d",&sec4);
+    if(sec4 == 1){
+       divdelt();
+    }
+    else if(sec4 == 2){
+       accudelt();
+    }
+    else if(sec4 == 3){
+       markdelt();
+    }
+    else if(sec4 == 4){
+       humdelt();
+    }
+    else{
+        printf("PLEASE SELECT FROM 1 TO 4 \n");
+    }
+}
+//Development Deleting employee
+void divdelt(){
+    char dnamess[0] = "";
+    int ress;
+
+    char dname[25];
+    printf("please insert the name \n");
+    scanf("%s",&dname);
+    FILE *fd1,*fd2;
+    fd1 = fopen("Development.txt","r");
+    fd2 = fopen("Developmenttemp.txt","w");
+    while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+       ress = strcmp(dname,dnames);
+       if(ress == 0){
+          fprintf(fd2,"%s",dnamess);
+       }
+       else{
+
+       fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
+       }
+    }
+    fclose(fd1);
+    fclose(fd2);
+    remove("Development.txt");
+    rename("Developmenttemp.txt","Development.txt");
+}
+//Accounting Deleting employee
+void accudelt(){
+    char dnamess[0] = "";
+    int ress;
+
+    char dname[25];
+    printf("please insert the name \n");
+    scanf("%s",&dname);
+    FILE *fd1,*fd2;
+    fd1 = fopen("Accounting.txt","r");
+    fd2 = fopen("Accountingtemp.txt","w");
+    while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+       ress = strcmp(dname,dnames);
+       if(ress == 0){
+          fprintf(fd2,"%s",dnamess);
+       }
+       else{
+
+       fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
+       }
+    }
+    fclose(fd1);
+    fclose(fd2);
+    remove("Accounting.txt");
+    rename("Accountingtemp.txt","Accounting.txt");
+}
+
+//Marketing Deleting employee
+void markdelt(){
+    char dnamess[0] = "";
+    int ress;
+
+    char dname[25];
+    printf("please insert the name \n");
+    scanf("%s",&dname);
+    FILE *fd1,*fd2;
+    fd1 = fopen("Marketing.txt","r");
+    fd2 = fopen("Marketingtemp.txt","w");
+    while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+       ress = strcmp(dname,dnames);
+       if(ress == 0){
+          fprintf(fd2,"%s",dnamess);
+       }
+       else{
+
+       fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
+       }
+    }
+    fclose(fd1);
+    fclose(fd2);
+    remove("Marketing.txt");
+    rename("Marketingtemp.txt","Marketing.txt");
+}
+
+//Human Resource Deleting employee
+void humdelt(){
+    char dnamess[0] = "";
+    int ress;
+
+    char dname[25];
+    printf("please insert the name \n");
+    scanf("%s",&dname);
+    FILE *fd1,*fd2;
+    fd1 = fopen("Human.txt","r");
+    fd2 = fopen("Humantemp.txt","w");
+    while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+       ress = strcmp(dname,dnames);
+       if(ress == 0){
+          fprintf(fd2,"%s",dnamess);
+       }
+       else{
+
+       fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
+       }
+    }
+    fclose(fd1);
+    fclose(fd2);
+    remove("Human.txt");
+    rename("Humantemp.txt","Human.txt");
+}
+
+
+
 void dis(){
         printf("***->> Name: %s \n",dnames);
         printf("***->> EID : %s \n",dids);
