@@ -99,9 +99,9 @@ void casethree(){
     else{
         printf("PLEASE SELECT FROM 1 TO 4 \n");
     }
-
-
 }
+
+
 // Human Section Edit
 void humanedit(){
     int ress;
@@ -370,6 +370,14 @@ void display_h(){
     }
     fclose(ft);
 }
+void displayall(){
+    FILE *fa;
+    fa = fopen("All.txt","r");
+    while(fscanf(fa,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
+    dis();
+    }
+    fclose(fa);
+}
 
 //Display by Name ****
 
@@ -454,6 +462,8 @@ void casetwo(){
     char cmp[25],dname[25],did[15];
     do{
         section();
+
+          printf("\xB3 5 FOR SHOW ALL EMPLOYEE   \xB3 \n");
           scanf("%d",&sec2);
           switch(sec2){
             case 1:{
@@ -569,6 +579,12 @@ void casetwo(){
                 while(cmp!="back");
                 break;
             }
+            case 5:{
+                system("cls");
+                printf(">>>>>>> ALL DEPERTMENT'S EMPLOYEEE'S INFO <<<<<<<<\n");
+                displayall();
+                break;
+            }
             case 0:home();
           }
         }
@@ -631,7 +647,7 @@ int sucess(){
     }
 }
 
-void add(FILE *fd){
+void add(FILE *fd,FILE *fa){
     int back;
     char name[25];
     char eid[10];
@@ -673,15 +689,18 @@ void add(FILE *fd){
     printf("*** EMPLOYEE PHONE *** \n");
     scanf("%ld",&phon);
     fprintf(fd,"%s %s %s %d %s %ld\n",name,eid,title,sal,email,phon);
+    fprintf(fa,"%s %s %s %d %s %ld\n",name,eid,title,sal,email,phon);
     fclose(fd);
+    fclose(fa);
 
 }
 
 void development(){
     int res,data;
-    FILE *fd;
+    FILE *fd,*fa;
     fd = fopen("Development.txt","a");
-    add(fd);
+    fa = fopen("All.txt","a");
+    add(fd,fa);
     res = sucess();
     if(res == 0){
        printf("PRESS 1 FOR ADDING THIS SELECTED SECTION \n");
@@ -701,9 +720,10 @@ void development(){
 
 void accounting(){
     int ares,data;
-    FILE *fd;
+    FILE *fd,*fa;
     fd = fopen("Accounting.txt","a");
-    add(fd);
+    fa = fopen("All.txt","a");
+    add(fd,fa);
     ares = sucess();
     if(ares == 0){
        printf("PRESS 1 FOR ADDING THIS SELECTED SECTION \n");
@@ -723,9 +743,10 @@ void accounting(){
 
 void marketing(){
     int mres,data;
-    FILE *fm;
+    FILE *fm,*fa;
     fm = fopen("Marketing.txt","a");
-    add(fm);
+    fa = fopen("All.txt","a");
+    add(fm,fa);
     mres = sucess();
     if(mres == 0){
        printf("PRESS 1 FOR ADDING THIS SELECTED SECTION \n");
@@ -745,9 +766,10 @@ void marketing(){
 
 void human(){
     int fres,data;
-    FILE *fh;
+    FILE *fh,*fa;
     fh = fopen("Human.txt","a");
-    add(fh);
+    fa = fopen("All.txt","a");
+    add(fh,fa);
     fres = sucess();
     if(fres == 0){
        printf("PRESS 1 FOR ADDING THIS SELECTED SECTION \n");
