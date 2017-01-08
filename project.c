@@ -101,12 +101,18 @@ void casethree(){
     }
 }
 
-
 // Human Section Edit
 void humanedit(){
+    char name[25];
+    char eid[10];
+    char title[25];
+    int sal;
+    char email[35];
+    long int phon;
+    int edit;
     int ress;
     char dname[25];
-    printf("please insert the name \n");
+    printf("PLEASE WRITE THE NAME \n");
     scanf("%s",&dname);
     FILE *fd1,*fd2;
     fd1 = fopen("Human.txt","r");
@@ -114,7 +120,74 @@ void humanedit(){
     while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
        ress = strcmp(dname,dnames);
        if(ress == 0){
-           add(fd2);
+          printf("WHAT DO YOU WANT TO EDIT \n\n");
+          printf("->-> 0 FOR ALL EDIT -<-< \n");
+          printf("->-> 1 FOR NAME -<-< \n");
+          printf("->-> 2 FOR E-ID -<-< \n");
+          printf("->-> 3 FOR DESIGNATION -<-< \n");
+          printf("->-> 4 FOR SALARY -<-< \n");
+          printf("->-> 6 FOR PHON -<-< \n");
+          scanf("%d",&edit);
+          if(edit == 0){
+
+            printf("*** EMPLOYEE NAME *** \n");
+            scanf("%s",&name);
+             printf("*** EMPLOYEE ID *** \n");
+             scanf("%s",&eid);
+            printf("*** EMPLOYEE DESIGNATION *** \n");
+            scanf("%s",&title);
+            printf("*** EMPLOYEE SALARRY *** \n");
+            scanf("%d",&sal);
+            printf("*** EMPLOYEE EMAIL *** \n");
+            scanf("%s",&email);
+            printf("*** EMPLOYEE PHONE *** \n");
+            scanf("%ld",&phon);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",name,eid,title,sal,email,phon);
+
+           casethree();
+          }
+          else if(edit == 1){
+            printf("*** EMPLOYEE NAME *** \n");
+            scanf("%s",&name);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",name,dids,dtitle,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 2){
+             printf("*** EMPLOYEE ID *** \n");
+             scanf("%s",&eid);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,eid,dtitle,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 3){
+            printf("*** EMPLOYEE DESIGNATION *** \n");
+            scanf("%s",&title);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,title,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 4){
+            printf("*** EMPLOYEE SALARRY *** \n");
+            scanf("%d",&sal);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,sal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 5){
+            printf("*** EMPLOYEE EMAIL *** \n");
+            scanf("%s",&email);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,email,dphon);
+           casethree();
+          }
+          else if(edit == 6){
+            printf("*** EMPLOYEE PHONE *** \n");
+            scanf("%ld",&phon);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,phon);
+           casethree();
+          }
+          else if(edit == 7){
+           casethree();
+          }
+            else{
+                printf("*** PLEASE SELECT FORM 1 TO 6 *** \n");
+            }
        }
        else{
         fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
@@ -126,10 +199,20 @@ void humanedit(){
     rename("Humantemp.txt","Human.txt");
 }
 // Marketing Section Edit
+
+
+// Marketing Section Edit
 void markedit(){
+    char name[25];
+    char eid[10];
+    char title[25];
+    int sal;
+    char email[35];
+    long int phon;
+    int edit;
     int ress;
     char dname[25];
-    printf("please insert the name \n");
+    printf("PLEASE WRITE THE NAME \n");
     scanf("%s",&dname);
     FILE *fd1,*fd2;
     fd1 = fopen("Marketing.txt","r");
@@ -137,7 +220,74 @@ void markedit(){
     while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
        ress = strcmp(dname,dnames);
        if(ress == 0){
-           add(fd2);
+          printf("WHAT DO YOU WANT TO EDIT \n\n");
+          printf("->-> 0 FOR ALL EDIT -<-< \n");
+          printf("->-> 1 FOR NAME -<-< \n");
+          printf("->-> 2 FOR E-ID -<-< \n");
+          printf("->-> 3 FOR DESIGNATION -<-< \n");
+          printf("->-> 4 FOR SALARY -<-< \n");
+          printf("->-> 6 FOR PHON -<-< \n");
+          scanf("%d",&edit);
+          if(edit == 0){
+
+            printf("*** EMPLOYEE NAME *** \n");
+            scanf("%s",&name);
+             printf("*** EMPLOYEE ID *** \n");
+             scanf("%s",&eid);
+            printf("*** EMPLOYEE DESIGNATION *** \n");
+            scanf("%s",&title);
+            printf("*** EMPLOYEE SALARRY *** \n");
+            scanf("%d",&sal);
+            printf("*** EMPLOYEE EMAIL *** \n");
+            scanf("%s",&email);
+            printf("*** EMPLOYEE PHONE *** \n");
+            scanf("%ld",&phon);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",name,eid,title,sal,email,phon);
+
+           casethree();
+          }
+          else if(edit == 1){
+            printf("*** EMPLOYEE NAME *** \n");
+            scanf("%s",&name);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",name,dids,dtitle,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 2){
+             printf("*** EMPLOYEE ID *** \n");
+             scanf("%s",&eid);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,eid,dtitle,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 3){
+            printf("*** EMPLOYEE DESIGNATION *** \n");
+            scanf("%s",&title);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,title,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 4){
+            printf("*** EMPLOYEE SALARRY *** \n");
+            scanf("%d",&sal);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,sal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 5){
+            printf("*** EMPLOYEE EMAIL *** \n");
+            scanf("%s",&email);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,email,dphon);
+           casethree();
+          }
+          else if(edit == 6){
+            printf("*** EMPLOYEE PHONE *** \n");
+            scanf("%ld",&phon);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,phon);
+           casethree();
+          }
+          else if(edit == 7){
+           casethree();
+          }
+            else{
+                printf("*** PLEASE SELECT FORM 1 TO 6 *** \n");
+            }
        }
        else{
         fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
@@ -148,11 +298,19 @@ void markedit(){
     remove("Marketing.txt");
     rename("Marketingtemp.txt","Marketing.txt");
 }
-// ACCunting Section Edit
+
+// Marketing Section Edit
 void accedit(){
+    char name[25];
+    char eid[10];
+    char title[25];
+    int sal;
+    char email[35];
+    long int phon;
+    int edit;
     int ress;
     char dname[25];
-    printf("please insert the name \n");
+    printf("PLEASE WRITE THE NAME \n");
     scanf("%s",&dname);
     FILE *fd1,*fd2;
     fd1 = fopen("Accounting.txt","r");
@@ -160,7 +318,74 @@ void accedit(){
     while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
        ress = strcmp(dname,dnames);
        if(ress == 0){
-           add(fd2);
+          printf("WHAT DO YOU WANT TO EDIT \n\n");
+          printf("->-> 0 FOR ALL EDIT -<-< \n");
+          printf("->-> 1 FOR NAME -<-< \n");
+          printf("->-> 2 FOR E-ID -<-< \n");
+          printf("->-> 3 FOR DESIGNATION -<-< \n");
+          printf("->-> 4 FOR SALARY -<-< \n");
+          printf("->-> 6 FOR PHON -<-< \n");
+          scanf("%d",&edit);
+          if(edit == 0){
+
+            printf("*** EMPLOYEE NAME *** \n");
+            scanf("%s",&name);
+             printf("*** EMPLOYEE ID *** \n");
+             scanf("%s",&eid);
+            printf("*** EMPLOYEE DESIGNATION *** \n");
+            scanf("%s",&title);
+            printf("*** EMPLOYEE SALARRY *** \n");
+            scanf("%d",&sal);
+            printf("*** EMPLOYEE EMAIL *** \n");
+            scanf("%s",&email);
+            printf("*** EMPLOYEE PHONE *** \n");
+            scanf("%ld",&phon);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",name,eid,title,sal,email,phon);
+
+           casethree();
+          }
+          else if(edit == 1){
+            printf("*** EMPLOYEE NAME *** \n");
+            scanf("%s",&name);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",name,dids,dtitle,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 2){
+             printf("*** EMPLOYEE ID *** \n");
+             scanf("%s",&eid);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,eid,dtitle,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 3){
+            printf("*** EMPLOYEE DESIGNATION *** \n");
+            scanf("%s",&title);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,title,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 4){
+            printf("*** EMPLOYEE SALARRY *** \n");
+            scanf("%d",&sal);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,sal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 5){
+            printf("*** EMPLOYEE EMAIL *** \n");
+            scanf("%s",&email);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,email,dphon);
+           casethree();
+          }
+          else if(edit == 6){
+            printf("*** EMPLOYEE PHONE *** \n");
+            scanf("%ld",&phon);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,phon);
+           casethree();
+          }
+          else if(edit == 7){
+           casethree();
+          }
+            else{
+                printf("*** PLEASE SELECT FORM 1 TO 6 *** \n");
+            }
        }
        else{
         fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
@@ -169,13 +394,22 @@ void accedit(){
     fclose(fd1);
     fclose(fd2);
     remove("Accounting.txt");
-    rename("Accountingtemp.txt","Accounting.txt");
+    rename("Accountingtemp.txt","Marketing.txt");
 }
-// Development Section Edit
+
+
+// Marketing Section Edit
 void divedit(){
+    char name[25];
+    char eid[10];
+    char title[25];
+    int sal;
+    char email[35];
+    long int phon;
+    int edit;
     int ress;
     char dname[25];
-    printf("please insert the name \n");
+    printf("PLEASE WRITE THE NAME \n");
     scanf("%s",&dname);
     FILE *fd1,*fd2;
     fd1 = fopen("Development.txt","r");
@@ -183,7 +417,74 @@ void divedit(){
     while(fscanf(fd1,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,&dsal,demail,&dphon)!=EOF){
        ress = strcmp(dname,dnames);
        if(ress == 0){
-           add(fd2);
+          printf("WHAT DO YOU WANT TO EDIT \n\n");
+          printf("->-> 0 FOR ALL EDIT -<-< \n");
+          printf("->-> 1 FOR NAME -<-< \n");
+          printf("->-> 2 FOR E-ID -<-< \n");
+          printf("->-> 3 FOR DESIGNATION -<-< \n");
+          printf("->-> 4 FOR SALARY -<-< \n");
+          printf("->-> 6 FOR PHON -<-< \n");
+          scanf("%d",&edit);
+          if(edit == 0){
+
+            printf("*** EMPLOYEE NAME *** \n");
+            scanf("%s",&name);
+             printf("*** EMPLOYEE ID *** \n");
+             scanf("%s",&eid);
+            printf("*** EMPLOYEE DESIGNATION *** \n");
+            scanf("%s",&title);
+            printf("*** EMPLOYEE SALARRY *** \n");
+            scanf("%d",&sal);
+            printf("*** EMPLOYEE EMAIL *** \n");
+            scanf("%s",&email);
+            printf("*** EMPLOYEE PHONE *** \n");
+            scanf("%ld",&phon);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",name,eid,title,sal,email,phon);
+
+           casethree();
+          }
+          else if(edit == 1){
+            printf("*** EMPLOYEE NAME *** \n");
+            scanf("%s",&name);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",name,dids,dtitle,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 2){
+             printf("*** EMPLOYEE ID *** \n");
+             scanf("%s",&eid);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,eid,dtitle,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 3){
+            printf("*** EMPLOYEE DESIGNATION *** \n");
+            scanf("%s",&title);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,title,dsal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 4){
+            printf("*** EMPLOYEE SALARRY *** \n");
+            scanf("%d",&sal);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,sal,demail,dphon);
+           casethree();
+          }
+          else if(edit == 5){
+            printf("*** EMPLOYEE EMAIL *** \n");
+            scanf("%s",&email);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,email,dphon);
+           casethree();
+          }
+          else if(edit == 6){
+            printf("*** EMPLOYEE PHONE *** \n");
+            scanf("%ld",&phon);
+            fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,phon);
+           casethree();
+          }
+          else if(edit == 7){
+           casethree();
+          }
+            else{
+                printf("*** PLEASE SELECT FORM 1 TO 6 *** \n");
+            }
        }
        else{
         fprintf(fd2,"%s %s %s %d %s %ld\n",dnames,dids,dtitle,dsal,demail,dphon);
@@ -194,9 +495,6 @@ void divedit(){
     remove("Development.txt");
     rename("Developmenttemp.txt","Development.txt");
 }
-
-
-
 
 
 //Deleting employee
