@@ -19,12 +19,15 @@
   <li> Easey to Remove employee. </li>
   <li>Show Employee information by id or name. </li>
 </ul>
-<p>
+<p >
 Thanks for watching my project. 
 This is an simple Employee Management System Project, developed with C Programming language. This project is password protected .
 If you guyes are want to get access just write habib as passwork.  
-Then you can check it. <br><br><br><br><br>
-Thanks,<br>
+Then you can check it. <br><br><br>
+if you have any query , please email me at<br>
+habib41juwel@gmail.com
+OR Can message me at Facebook<br>
+https://www.facebook.com/profile.php?id=100009546913827
 Habibur Rahman Juwel<br>
 BSc in CSE,<br>
 23/1, BUBT.
