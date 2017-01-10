@@ -1,6 +1,6 @@
 <h1>EMPLOYEE MANAGEMENTSYSTEM</h1>
 <h2>Presented By:-<h2>
-<h3> Habibur Rahman Juwel</h3>
+<h1 style="color:red;font-size:40px;font-weight:700"> Habibur Rahman Juwel</h1>
 
 <h2>OBJECTIVE OF THE PROJECT<h2>
 <ul>
@@ -19,7 +19,7 @@
   <li> Easey to Remove employee. </li>
   <li>Show Employee information by id or name. </li>
 </ul>
-
+<p>
 Thanks for watching my project. 
 This is an simple Employee Management System Project, developed with C Programming language. This project is password protected .
 If you guyes are want to get access just write habib as passwork.  
@@ -28,4 +28,4 @@ Thanks
 Habibur Rahman Juwel
 BSc in CSE,
 23/1, BUBT.
-
+</p>
